@@ -15,7 +15,7 @@ public class User extends AbstractBaseEntity {
 
 	private String firstName;
 	private String lastName;
-	private String login;
+	private String email;
 	private String password;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -39,11 +39,11 @@ public class User extends AbstractBaseEntity {
 	}
 
 	public String getLogin() {
-		return login;
+		return email;
 	}
 
 	public void setLogin(String login) {
-		this.login = login;
+		this.email = login;
 	}
 
 	public String getPassword() {
