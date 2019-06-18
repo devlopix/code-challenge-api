@@ -20,7 +20,14 @@ public class User extends AbstractBaseEntity {
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinTable(name = "user_role_association", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-	List<Role> roles = new ArrayList<Role>();
+	private List<Role> roles = new ArrayList<Role>();
+
+	public User(User user) {
+		this.email = user.getEmail();
+		this.firstName = user.getFirstName();
+		this.password = user.getPassword();
+		this.lastName = user.getLastName();
+	}
 
 	public String getFirstName() {
 		return firstName;
@@ -38,20 +45,28 @@ public class User extends AbstractBaseEntity {
 		this.lastName = lastName;
 	}
 
-	public String getLogin() {
-		return email;
-	}
-
-	public void setLogin(String login) {
-		this.email = login;
-	}
-
 	public String getPassword() {
 		return password;
 	}
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public List<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
 	}
 
 }
